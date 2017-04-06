@@ -15,7 +15,7 @@ Only required for Jenkins pipelines or if you are running Artifactory and/or Ope
 
 ## How to Install omar-jpip-app locally
 
-1. Install omar-oms-plugin [Go here for instructions](https://github.com/ossimlabs/omar-oms)
+1. Install omar-oms-plugin [click this link for instructions](https://github.com/ossimlabs/omar-oms)
 
 2. Git clone the following repos or git pull the latest versions if you already have them.
 ```
