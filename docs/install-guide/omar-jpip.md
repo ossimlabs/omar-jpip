@@ -23,33 +23,6 @@ Ref: [omar-ossim-base](../../../omar-ossim-base/docs/install-guide/omar-ossim-ba
 
 Additional configuration from [Common Config Settings](../../../omar-common/docs/install-guide/omar-common/#common-config-settings) can be added to the YAML.
 
-```
-environments:
-  production:
-    dataSource:
-      pooled: true
-      jmxExport: true
-      driverClassName: ${omarDb.driver}
-      dialect:  ${omarDb.dialect}
-      url:      ${omarDb.url}
-      username: ${omarDb.username}
-      password: ${omarDb.password}
-
-quartz:
-  jdbcStore: false
-  threadPool:
-    threadCount: 4
-
-omar:
-  jpip:
-    server:
-      cache: /data/jpip-cache
-      ip:   ${serverName}
-      url:   jpip://${serverName}:5004
-```
-
-where 
-
 * **quartz**
  * **jdbcStore** Specifies if the quartz queues should be persisted.  Currently have not setup persitent storeage with quartz.  Currently set to **false**.
  * **threadPool.threadCount** Defines the number of concurrent threads that can run.
