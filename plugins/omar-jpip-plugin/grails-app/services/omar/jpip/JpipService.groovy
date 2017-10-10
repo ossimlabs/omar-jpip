@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 
 import groovy.util.logging.Slf4j
 import omar.oms.ChipperUtil
-import org.apache.tomcat.util.net.URL
+// import org.apache.tomcat.util.net.URL
 
 // import omar.jpip.Util
 
@@ -72,7 +72,7 @@ class JpipService
        if(!row)
        {
           String uuidString = "${UUID.randomUUID().toString()}"
-          
+
           image = new JpipImage(
                 filename:cmd.filename,
                 entry:cmd.entry,
@@ -118,7 +118,7 @@ class JpipService
     def updateStatus(String jpipId, String status)
     {
         JpipImage row = JpipImage.findByJpipId(jpipId)
-	
+
         if ( row )
         {
             if(row.status != status)

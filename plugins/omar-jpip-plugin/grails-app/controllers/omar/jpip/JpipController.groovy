@@ -1,9 +1,11 @@
 package omar.jpip
 
-import com.wordnik.swagger.annotations.Api
-import com.wordnik.swagger.annotations.ApiImplicitParam
-import com.wordnik.swagger.annotations.ApiImplicitParams
-import com.wordnik.swagger.annotations.ApiOperation
+// import com.wordnik.swagger.annotations.Api
+// import com.wordnik.swagger.annotations.ApiImplicitParam
+// import com.wordnik.swagger.annotations.ApiImplicitParams
+// import com.wordnik.swagger.annotations.ApiOperation
+import io.swagger.annotations.*
+
 import grails.converters.JSON
 import omar.core.BindUtil
 
@@ -48,7 +50,7 @@ class JpipController {
             @ApiImplicitParam( name = 'entry', value = 'Entry to request', defaultValue = '0', paramType = 'query', dataType = 'string', required = true ),
             @ApiImplicitParam( name = 'projCode', value = 'Projection Code', allowableValues = "[chip,geo-scaled,4326,3857]", defaultValue = '4326', paramType = 'query', dataType = 'string', required = true ),
     ] )
-    
+
     def createStream()
     {
 	try
