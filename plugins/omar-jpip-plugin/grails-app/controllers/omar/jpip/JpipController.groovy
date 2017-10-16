@@ -23,26 +23,17 @@ class JpipController {
 
     @ApiOperation( value = "Query the JPIP server stream link", produces = 'application/json',
             notes="""
-<br>
-<br>
-    <ul>
-        <li>
-            <b>filename</b><p/>
-            This is the filename of the image you wish to have a JPIP stream created for.  If one is already
-            created then it will return a URL link with the value of FINISHED
-        </li>
-        <br><br>
-        <li>
-            <b>entry</b><p/>
-            For multi entry Images you need to specify the entry number.   We should default to entry 0
-        </li>
-        <br><br>
-        <li>
-            <b>projCode</b><p/>
-            chip=image space, geo-scaled - origin lat of true scale = image center, 4326 for geographic, 3857 for google mercator.
-        </li>
-        <br>
-    </ul>
+*   **filename**
+
+    This is the filename of the image you wish to have a JPIP stream created for. If one is already created then it will return a URL link with the value of FINISHED
+
+*   **entry**
+
+    For multi entry Images you need to specify the entry number. We should default to entry 0
+
+*   **projCode**
+
+    chip=image space, geo-scaled - origin lat of true scale = image center, 4326 for geographic, 3857 for google mercator.
 """
     )
     @ApiImplicitParams( [
