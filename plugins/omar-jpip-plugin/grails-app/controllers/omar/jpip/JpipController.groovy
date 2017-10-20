@@ -41,7 +41,7 @@ class JpipController {
     @ApiImplicitParams( [
             @ApiImplicitParam( name = 'filename', value = 'Filename to request a stream for', paramType = 'query', dataType = 'string', required = true ),
             @ApiImplicitParam( name = 'entry', value = 'Entry to request', defaultValue = '0', paramType = 'query', dataType = 'string', required = true ),
-            @ApiImplicitParam( name = 'projCode', value = 'Projection Code', allowableValues = "[chip,geo-scaled,4326,3857]", defaultValue = '4326', paramType = 'query', dataType = 'string', required = true ),
+            @ApiImplicitParam( name = 'projCode', value = 'Projection Code', allowableValues = "chip,geo-scaled,4326,3857", defaultValue = '4326', paramType = 'query', dataType = 'string', required = true ),
     ] )
 
     def createStream()
