@@ -9,7 +9,7 @@ import io.swagger.annotations.*
 import grails.converters.JSON
 import omar.core.BindUtil
 
-@Api(value = "JPIP",
+@Api(value = "jpip",
         description = "JPIP conversion is performed on the image passed in."
 )
 class JpipController {
