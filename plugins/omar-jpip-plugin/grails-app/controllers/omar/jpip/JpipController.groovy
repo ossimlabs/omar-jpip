@@ -21,8 +21,10 @@ class JpipController {
 
     }
 
-    @ApiOperation( value = "Query the JPIP server stream link", produces = 'application/json',
-            notes="""
+    @ApiOperation( value = "Query the JPIP server stream link", 
+        produces = 'application/json',
+        httpMethod = "POST",
+        notes="""
 *   **filename**
 
     This is the filename of the image you wish to have a JPIP stream created for. If one is already created then it will return a URL link with the value of FINISHED
