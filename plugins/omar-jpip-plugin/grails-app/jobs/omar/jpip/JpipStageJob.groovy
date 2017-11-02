@@ -7,6 +7,7 @@ import groovy.util.logging.Slf4j
 class JpipStageJob {
 
    def jpipService
+   def concurrent = false
 
    static triggers = {
       simple repeatInterval: 5000l // execute job once in 5 seconds
