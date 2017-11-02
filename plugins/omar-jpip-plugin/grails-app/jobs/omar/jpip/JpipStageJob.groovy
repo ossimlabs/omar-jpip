@@ -15,7 +15,7 @@ class JpipStageJob {
 
    def execute() {
       def job
-
+      log.info("Executing job");
       while(job = jpipService.nextJob())
       {
          log.info("processing job ${job?.jpipId}")
