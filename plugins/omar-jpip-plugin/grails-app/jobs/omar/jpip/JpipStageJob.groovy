@@ -14,6 +14,7 @@ class JpipStageJob {
    }
 
    def execute() {
+      println "EXECUTING JOB!!!!!!!!!!!!!!!!!!!"
       def job
       log.info("Executing job");
       while(job = jpipService.nextJob())
