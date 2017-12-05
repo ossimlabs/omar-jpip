@@ -1,4 +1,54 @@
 ---
+# Set the context path of the application.
+#server:
+#  contextPath: /omar-jpip
+
+# Define the production database values.
+environments:
+  production:
+    dataSource:
+      pooled: true
+      jmxExport: true
+      driverClassName: org.postgresql.Driver
+      dialect:  org.hibernate.spatial.dialect.postgis.PostgisDialect
+      url: jdbc:postgresql://localhost:5432/omar_db
+      username: postgres
+      password: password
+
+logging:
+  config: classpath:logback.groovy
+
+omar:
+  jpip:
+    server:
+      # Is the location where to write the JP2 images.
+      cache: /data/jpip-cache
+      # The location of the JPIP server IP.
+      # This is the actual streaming server IP, not the jpip-app IP.
+      # The jpip-app just translates imagery into a JP2 file for streaming.
+      ip:    jpip.ossim.io
+      log:   /data/omar/jpip_server/log/omar-jpip-server-log.txt
+      # The full URL of the jpip server.
+      # This is the actual streaming server IP, not the jpip-app IP.
+      # The jpip-app just translates imagery into a JP2 file for streaming.
+      url:   jpip://jpip.ossim.io
+
+quartz:
+  # Specifies if the quartz queues should be persisted.
+  # Currently have not setup persitent storeage with quartz.
+  # Currently set to "false".
+  jdbcStore: false
+  threadPool:
+    # Defines the number of concurrent threads that can run.
+    threadCount: 4
+
+# Define the http protocols that swagger is allowed to use.
+swagger:
+  schemes:
+    - HTTPS
+    - HTTP
+
+---
 grails:
     cors:
       enabled: true
@@ -129,7 +179,8 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            # This is defined above.
+            #url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
             properties:
                 jmxEnabled: true
                 initialSize: 5
@@ -148,23 +199,3 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
----
-quartz:
-  jdbcStore: false
-
-omar:
-  jpip:
-    server:
-      cache: /data/omar/jpip_server/cache
-      log:   /data/omar/jpip_server/log/omar-jpip-server-log.txt
-      ip:    ossim-jpip-server
-      url:   jpip://ossim-jpip-server:8080
-
----
-swagger:
-  schemes:
-    - HTTPS
-    - HTTP
-
-logging:
-  config: classpath:logback.groovy
