@@ -1,6 +1,5 @@
 package omar.jpip
 
-import omar.oms.ChipperUtil
 import groovy.util.logging.Slf4j
 
 @Slf4j
