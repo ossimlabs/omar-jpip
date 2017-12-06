@@ -199,7 +199,7 @@ class JpipService
             updateStatus(jpipId, JobStatus.RUNNING.toString())
 
           //  if(ChipperUtil.executeChipper(initOps))
-            if( executeChipper( initOps ) )
+            if ( executeChipper( initOps ) )
             {
                 updateStatus(jpipId, JobStatus.FINISHED.toString())
             }
@@ -262,15 +262,20 @@ class JpipService
     def executeChipper(Map<String,String> initOpts)
     {
       def json = new JsonBuilder( initOpts ).toString()
+      def serviceAddress = grailsApplication.config.omar.jpip.oms.chipper.url.toURL()
 
       def results = HttpBuilder.configure {
-          request.uri = 'http://localhost:8084'
+            request.uri = serviceAddress.toString() - serviceAddress.path
       }.post(Boolean) {
-          request.uri.path = '/omar-oms/chipper/executeChipper'
+          request.uri.path = serviceAddress.path
           request.contentType = 'application/json'
           request.body = json
           response.success { FromServer from, Object body->
               Boolean.parseBoolean(body)
+          }
+          response.failure { FromServer from, Object body ->
+            log.error from.toString()
+            log.error body
           }
       }
     }
