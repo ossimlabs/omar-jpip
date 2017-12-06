@@ -2,10 +2,12 @@ package omar.jpip
 
 import grails.core.GrailsApplication
 import grails.transaction.Transactional
-// import groovyx.net.http.HTTPBuilder
+import groovy.json.JsonBuilder
+import groovyx.net.http.HttpBuilder
+import groovyx.net.http.FromServer
 
 import groovy.util.logging.Slf4j
-import omar.oms.ChipperUtil
+// import omar.oms.ChipperUtil
 // import org.apache.tomcat.util.net.URL
 
 // import omar.jpip.Util
@@ -195,7 +197,9 @@ class JpipService
             log.debug("ChipperUtil options: ${initOps}")
 
             updateStatus(jpipId, JobStatus.RUNNING.toString())
-            if(ChipperUtil.executeChipper(initOps))
+
+          //  if(ChipperUtil.executeChipper(initOps))
+            if ( executeChipper( initOps ) )
             {
                 updateStatus(jpipId, JobStatus.FINISHED.toString())
             }
@@ -253,5 +257,26 @@ class JpipService
             result += "/${row?.jpipId}-${row?.projCode}_e${row?.entry}.jp2".toString();
         }
         result;
+    }
+
+    def executeChipper(Map<String,String> initOpts)
+    {
+      def json = new JsonBuilder( initOpts ).toString()
+      def serviceAddress = grailsApplication.config.omar.jpip.oms.chipper.url.toURL()
+
+      def results = HttpBuilder.configure {
+            request.uri = serviceAddress.toString() - serviceAddress.path
+      }.post(Boolean) {
+          request.uri.path = serviceAddress.path
+          request.contentType = 'application/json'
+          request.body = json
+          response.success { FromServer from, Object body->
+              Boolean.parseBoolean(body)
+          }
+          response.failure { FromServer from, Object body ->
+            log.error from.toString()
+            log.error body
+          }
+      }
     }
 }

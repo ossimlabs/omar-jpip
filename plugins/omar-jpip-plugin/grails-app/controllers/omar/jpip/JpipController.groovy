@@ -21,7 +21,7 @@ class JpipController {
 
     }
 
-    @ApiOperation( value = "Query the JPIP server stream link", 
+    @ApiOperation( value = "Query the JPIP server stream link",
         produces = 'application/json',
         httpMethod = "POST",
         notes="""
@@ -46,7 +46,7 @@ class JpipController {
 
     def createStream()
     {
-	try
+      	try
         {
             def jsonData = request.JSON ? request.JSON as HashMap : null
             def requestParams = params - params.subMap(['controller', 'action'])

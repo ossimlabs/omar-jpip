@@ -159,22 +159,19 @@ hibernate:
         use_second_level_cache: false
         use_query_cache: false
 dataSource:
-    # This is defined above.
-    #pooled: true
-    # This is defined above.
-    #jmxExport: true
-    # This is defined above.
-    #driverClassName: org.h2.Driver
-    # This is defined above.
-    #username: sa
-    # This is defined above.
-    #password: ''
+    pooled: true
+    jmxExport: true
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    dialect: org.hibernate.dialect.PostgreSQL94Dialect
 
 environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+#            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:postgresql:omardb-${OSSIM_VERSION}-dev
     test:
         dataSource:
             dbCreate: update
@@ -202,3 +199,15 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+---
+omar:
+  jpip:
+    oms:
+      chipper:
+        # Is the location of the chipper endpoint for chipping imagery.
+        url: 'http://localhost:8084/omar-oms/chipper/executeChipper'
+
+        # Is the default histogram operation that is applied if no argument is passed in the styles.
+        # e.g.: "none", "auto-minmax", "auto-percentile", "std-stretch-1", "std-stretch-2", or "std-stretch-3"
+        histOp: auto-minmax
