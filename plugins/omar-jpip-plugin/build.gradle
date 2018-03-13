@@ -8,9 +8,11 @@ buildscript {
     apply from: System.env.OMAR_COMMON_PROPERTIES
   }
   repositories {
-    mavenLocal()
     maven { url "${ossimMavenProxy}" }
-    maven { url "https://repo.grails.org/grails/core" }
+    if( Boolean.parseBoolean( System.env.WWW_CONNECTED ) ) {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
   }
   dependencies {
     classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -65,7 +67,7 @@ grails {
 dependencies {
   compile "org.grails.plugins:quartz:${quartzV}"
   compile "io.github.http-builder-ng:http-builder-ng-core:${httpBuilderNgCoreV}"
-  
+
   //compile "org.springframework.cloud:spring-cloud-starter-zipkin"
   compile "org.springframework.boot:spring-boot-starter-logging"
   compile "org.springframework.boot:spring-boot-autoconfigure"
