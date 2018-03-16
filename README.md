@@ -26,23 +26,23 @@ Only required for Jenkins pipelines or if you are running Artifactory and/or Ope
 3. Install omar-hibernate-spatial-plugin
 ```
  cd omar-jpip/plugins/omar-hibernate-spatial-plugin
- ./gradlew clean install
+ gradle clean install
 ```
 
 4. Install omar-jpip-plugin
 ```
  cd omar-jpip/plugin/omar-jpip-plugin
- ./gradlew clean install
+ gradle clean install
 ```
 
 5. Build/Install omar-jpip-app
 #### Build:
 ```
  cd omar-jpip/apps/omar-jpip-app
- ./gradlew clean build
+ gradle clean build
  ```
 #### Install:
 ```
  cd omar-jpip/apps/omar-jpip-app
- ./gradlew clean install
+ gradle clean install
 ```
