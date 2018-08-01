@@ -6,7 +6,7 @@
 - OMAR_COMMON_PROPERTIES
 
 ### Optional environment variables
-Only required for Jenkins pipelines or if you are running Artifactory and/or Openshift locally
+Only required for Jenkins pipelines or if you are running Nexus and/or Openshift locally
 
 - OPENSHIFT_USERNAME
 - OPENSHIFT_PASSWORD
