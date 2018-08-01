@@ -10,8 +10,8 @@ Only required for Jenkins pipelines or if you are running Artifactory and/or Ope
 
 - OPENSHIFT_USERNAME
 - OPENSHIFT_PASSWORD
-- ARTIFACTORY_USER
-- ARTIFACTORY_PASSWORD
+- REPOSITORY_MANAGER_USER
+- REPOSITORY_MANAGER_PASSWORD
 
 ## How to Install omar-jpip-app locally
 
