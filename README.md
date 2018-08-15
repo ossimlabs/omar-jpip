@@ -1,5 +1,8 @@
 # omar-jpip
 
+## Description
+The OMAR JPIP (JPEG 2000 Interactive Protocol) service provides images using a compressed bandwidth protocol.
+
 [![Build Status](https://jenkins.radiantbluecloud.com/buildStatus/icon?job=omar-jpip-dev)]()
 
 ### Required environment variable
