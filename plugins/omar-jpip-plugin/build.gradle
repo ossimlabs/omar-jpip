@@ -59,19 +59,13 @@ dependencyManagement {
   applyMavenExclusions false
 }
 
-grails {
-  plugins {
-    compile project(':omar-core-plugin')
-    // compile project(':omar-oms-plugin')
-    compile project(':omar-hibernate-spatial-plugin')
-  }
-}
-
 dependencies {
+  compile "io.ossim.omar.plugins:omar-core-plugin:+"
+  compile "io.ossim.omar.plugins:omar-hibernate-spatial-plugin:+"
+
   compile "org.grails.plugins:quartz:${quartzV}"
   compile "io.github.http-builder-ng:http-builder-ng-core:${httpBuilderNgCoreV}"
 
-  //compile "org.springframework.cloud:spring-cloud-starter-zipkin"
   compile "org.springframework.boot:spring-boot-starter-logging"
   compile "org.springframework.boot:spring-boot-autoconfigure"
   compile "org.grails:grails-core"
