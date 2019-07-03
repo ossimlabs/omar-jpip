@@ -1,7 +1,7 @@
 ---
 # Set the context path of the application.
-#server:
-#  contextPath: /omar-jpip
+server:
+  contextPath: /omar-jpip
 
 # Define the production database values.
 environments:
